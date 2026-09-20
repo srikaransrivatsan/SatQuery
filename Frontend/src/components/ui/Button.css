@@ -1,0 +1,164 @@
+/* ══════════════════════════════════════════════
+   Button — Dark Space Intelligence
+   Primary: satellite blue
+   ══════════════════════════════════════════════ */
+
+.sq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-family: var(--font-main);
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  position: relative;
+  letter-spacing: 0.02em;
+  outline: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sq-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* Sizes */
+.sq-btn--sm  { height: 30px; padding: 0 12px; font-size: 12px; border-radius: 7px; gap: 4px; }
+.sq-btn--md  { height: 36px; padding: 0 16px; font-size: 13px; }
+.sq-btn--lg  { height: 42px; padding: 0 22px; font-size: 13px; font-weight: 700; border-radius: 11px; }
+.sq-btn--xl  {
+  height: 50px; padding: 0 26px; font-size: 12px;
+  font-weight: 700; border-radius: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* ── Primary ── */
+.sq-btn--primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(77,141,255,0.28);
+}
+.sq-btn--primary:hover:not(:disabled) {
+  background: var(--blue-bright);
+  box-shadow: 0 6px 32px rgba(77,141,255,0.48), 0 2px 8px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+.sq-btn--primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(77,141,255,0.20);
+}
+
+/* ── Secondary ── */
+.sq-btn--secondary {
+  background: var(--bg-raised);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.sq-btn--secondary:hover:not(:disabled) {
+  background: rgba(77,141,255,0.04);
+  border-color: rgba(77,141,255,0.28);
+  color: var(--text-main);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+/* ── Ghost ── */
+.sq-btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+.sq-btn--ghost:hover:not(:disabled) {
+  background: rgba(77,141,255,0.05);
+  color: var(--blue-bright);
+  border-color: rgba(77,141,255,0.16);
+  transform: translateY(-1px);
+}
+
+/* ── Outline ── */
+.sq-btn--outline {
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid rgba(77,141,255,0.40);
+}
+.sq-btn--outline:hover:not(:disabled) {
+  background: rgba(77,141,255,0.06);
+  border-color: var(--blue);
+  box-shadow: 0 0 18px rgba(77,141,255,0.14);
+  transform: translateY(-1px);
+}
+
+/* ── Danger ── */
+.sq-btn--danger {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border: 1px solid rgba(255,77,109,0.28);
+}
+.sq-btn--danger:hover:not(:disabled) {
+  background: rgba(255,77,109,0.18);
+  transform: translateY(-1px);
+}
+
+/* ── Analyze — Primary hero CTA ── */
+.sq-btn--analyze {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dim) 100%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  border-radius: 11px;
+  box-shadow:
+    0 4px 24px rgba(77,141,255,0.32),
+    0 0 0 1px rgba(77,141,255,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer sweep */
+.sq-btn--analyze::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+  transition: left 0.55s ease;
+}
+
+.sq-btn--analyze:hover:not(:disabled)::before { left: 100%; }
+
+.sq-btn--analyze:hover:not(:disabled) {
+  box-shadow:
+    0 8px 44px rgba(77,141,255,0.55),
+    0 0 0 1px rgba(107,163,255,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--blue-bright) 0%, var(--blue) 100%);
+}
+
+.sq-btn--analyze:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 12px rgba(77,141,255,0.22);
+}
+
+/* Disabled */
+.sq-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+.sq-btn--loading { cursor: wait; }
+
+.sq-btn__spinner {
+  width: 13px; height: 13px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: sq-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes sq-spin { to { transform: rotate(360deg); } }
+
+.sq-btn__icon { display: inline-flex; align-items: center; flex-shrink: 0; }
+.sq-btn__label { display: inline-flex; align-items: center; gap: 7px; }
